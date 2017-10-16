@@ -1,6 +1,7 @@
 (ns scrapecontracts.scraper.core
   (:require [clojure.core.async :refer [>!! <!! chan buffer close! thread timeout]]
-            [net.cgrand.enlive-html :as html]))
+            [scrapecontracts.scraper.fetch :refer [fetch]]))
+
 
 (defn scrape [site-vec processor-func opts-map]
   (println "not implemented"))
