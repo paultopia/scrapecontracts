@@ -1,3 +1,22 @@
+starting as micro-library.  goal api: 
+
+(scrape site-vec processor-func opts-map)
+
+sitevec: vector of urls to start at
+
+processor-func: function to handle each scraped page
+
+opts map with following keys: 
+
+option | default | description
+--- | --- | ---
+`:domain-depth` | 1 | depth to scrape each domain. 0 is just first page, 1 is follow links from first page, 2 is follow links from first page and each page thereafter, etc.
+`:travel-depth` | 1 | number of domains to traverse. 0 is do not leave original domain, 1 is go one domain, 2 is go two domains, etc.
+
+once this is done, factor out into micro library and then can trivially build contract scraper out of it.
+
+--
+
 scrape contracts using core.async --- basic api will be designed to factor out into library later, pass in a filter (boolean-returning) function for pages to be matched against and a callback function for what to do with matches that parses, shoves into database, etc.  Also takes a maxpages-from-domain parameter to avoid slamming people.  
 
 filter function will apply a fitted ML model to identify things that are contracts.  callback function will probably just append to a text file in my case, or maybe (if I feel ambitious) dump to a database.  though I don't really need database guarantees, so honestly the filesystem should be fine.
