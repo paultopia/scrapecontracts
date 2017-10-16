@@ -17,7 +17,7 @@ option | default | description
 
 once this is done, factor out into micro library and then can trivially build contract scraper out of it.
 
---
+-- 
 
 scrape contracts using core.async --- basic api will be designed to factor out into library later, pass in a filter (boolean-returning) function for pages to be matched against and a callback function for what to do with matches that parses, shoves into database, etc.  Also takes a maxpages-from-domain parameter to avoid slamming people.  
 
