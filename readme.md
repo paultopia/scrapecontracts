@@ -2,16 +2,18 @@ starting as micro-library.  goal api:
 
 (scrape site-vec processor-func opts-map)
 
-sitevec: vector of urls to start at
+site-vec: vector of urls to start at
 
 processor-func: function to handle each scraped page
 
-opts map with following keys: 
+opts-map with following keys: 
 
 option | default | description
 --- | --- | ---
 `:domain-depth` | 1 | depth to scrape each domain. 0 is just first page, 1 is follow links from first page, 2 is follow links from first page and each page thereafter, etc.
 `:travel-depth` | 1 | number of domains to traverse. 0 is do not leave original domain, 1 is go one domain, 2 is go two domains, etc.
+`:http-threads` | 2 | number of threads to spin up for http requests
+`:processing-threads` | 2 | number of threads to spin up for handling 
 
 once this is done, factor out into micro library and then can trivially build contract scraper out of it.
 
