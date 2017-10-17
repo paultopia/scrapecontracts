@@ -1,10 +1,12 @@
 starting as micro-library.  goal api: 
 
-(scrape site-vec processor-func opts-map)
+(scrape site-vec processor-func address-func opts-map)
 
 site-vec: vector of urls to start at
 
 processor-func: function to handle each scraped page
+
+address-func: function to call on url in scrape queue, returns url to scrape or nil to do nothing 
 
 opts-map with following keys: 
 
@@ -14,8 +16,13 @@ option | default | description
 `:travel-depth` | 1 | number of domains to traverse. 0 is do not leave original domain, 1 is go one domain, 2 is go two domains, etc.
 `:http-threads` | 2 | number of threads to spin up for http requests
 `:processing-threads` | 2 | number of threads to spin up for handling 
+`:stop-atom` | nil | symbol for atom to check on every scrape; if `true`, continue, if `false` then terminate execution. (e.g. change in callback function when enough pages are gathered)
 
 once this is done, factor out into micro library and then can trivially build contract scraper out of it.
+
+need to switch to jsoup; enlive isn't up to the job---no good get text, zero documentation, no updates in two years.
+
+also need to do request error handling---think jsoup can just be made to swallow those, but then what does it return?
 
 -- 
 
