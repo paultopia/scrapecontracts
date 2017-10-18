@@ -24,16 +24,16 @@
     (callback (<! http-channel))
     (recur)))
 
-;; example:
-;; (def hchan (make-http-channel ["http://paul-gowder.com" "http://rulelaw.net"]))
-;; (def outatom (atom []))
-;; (watch-http-channel hchan #(swap! outatom conj %))
-;; (count @outatom) => 2
 
 (defn fetch [addresses callback]
   (let [inchan (make-http-channel addresses)]
-    (watch-http-channel inchan callback)))
+    (watch-http-channel inchan callback)
+    (partial get inchan)))
 
 ;; example:
 ;; (def outatom (atom []))
 ;; (fetch ["http://paul-gowder.com" "http://rulelaw.net"] #(swap! outatom conj %))
+;; (count @outatom) => 2
+
+
+;; after fetch is called the first time, I can use the function returned to handle recursive crawling by just calling it to push new results onto the channel.
