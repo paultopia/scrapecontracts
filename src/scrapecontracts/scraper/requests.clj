@@ -8,21 +8,32 @@
    (map :body)
    (map parse)))
 
-(def inchan (chan 1 parse-transducer))
-
 (defn- get [inchan address]
   (http/get address #(go (>! inchan %))))
+;; error handling needs to be somewhere either in get or in parse-transduer
 
-(defn- chan->atom [inchan outatom]
-  (go-loop []
-    (swap! outatom conj (<! inchan))
-    (recur)))
-;; this is just a stub for looking at results, will be replaced with actual processor code.  Listen to channel and dump everything in it into an atom.  Or maybe I can just put all the side-effecting stuff in the transducer too and not have a go-loop or an atom at all?
 
-;; atom is meant to be an empty vector
-
-(defn fetch-pages! [addresses outatom]
-  (do
-    (chan->atom inchan outatom)
+(defn make-http-channel [addresses]
+  (let [inchan (chan 1 parse-transducer)]
     (dorun
-     (map (partial get inchan) addresses))))
+     (map (partial get inchan) addresses))
+    inchan))
+
+(defn watch-http-channel [http-channel, callback]
+  (go-loop []
+    (callback (<! http-channel))
+    (recur)))
+
+;; example:
+;; (def hchan (make-http-channel ["http://paul-gowder.com" "http://rulelaw.net"]))
+;; (def outatom (atom []))
+;; (watch-http-channel hchan #(swap! outatom conj %))
+;; (count @outatom) => 2
+
+(defn fetch [addresses callback]
+  (let [inchan (make-http-channel addresses)]
+    (watch-http-channel inchan callback)))
+
+;; example:
+;; (def outatom (atom []))
+;; (fetch ["http://paul-gowder.com" "http://rulelaw.net"] #(swap! outatom conj %))
