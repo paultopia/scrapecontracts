@@ -20,9 +20,11 @@ option | default | description
 
 once this is done, factor out into micro library and then can trivially build contract scraper out of it.
 
-need to switch to jsoup; enlive isn't up to the job---no good get text, zero documentation, no updates in two years.
+ need to do request error handling---think jsoup can just be made to swallow those, but then what does it return?
 
-also need to do request error handling---think jsoup can just be made to swallow those, but then what does it return?
+instead, consider a dedicated http client library. http-kit appears to play nicely with core.async, see this blog post: http://martintrojer.github.io/clojure/2013/07/07/coreasync-and-blocking-io ---aleph might be another good option? 
+
+another possibility is to switch to htmlunit and just emulate a browser to get js content.  maybe later, for more general library?  right now that is added complexity I do not need. 
 
 -- 
 
