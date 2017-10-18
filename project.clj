@@ -7,6 +7,7 @@
                  [com.cemerick/url "0.1.1"]
                  [enlive "1.1.6"]
                  [org.jsoup/jsoup "1.10.3"]
+                 [http-kit "2.2.0"]
                  [org.clojure/core.async "0.3.443"]]
   :main ^:skip-aot scrapecontracts.core
   :target-path "target/%s"
