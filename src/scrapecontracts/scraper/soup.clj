@@ -15,7 +15,7 @@
   (let [links (.select soup "a")]
     (mapv extract-link-data links)))
 
-(defn extract-all- [soup]
+(defn- extract-all [soup]
   (let [links (extract-links soup)
         text (.text soup)]
     {:soup soup :links links :text text}))
