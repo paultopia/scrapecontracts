@@ -22,8 +22,9 @@ once this is done, factor out into micro library and then can trivially build co
 
  need to do request error handling---think jsoup can just be made to swallow those, but then what does it return?
 
-instead, consider a dedicated http client library. http-kit appears to play nicely with core.async, see this blog post: http://martintrojer.github.io/clojure/2013/07/07/coreasync-and-blocking-io ---aleph might be another good option? 
+also need to handle non-html pages.  identification by browser content-type header, and, if no header, by extension in url?  also pass in an option for file types to handle?  for my immediate use I just want html and that can be the default but later i could have any format that can be turned into a string from a link---csv, json, even pdf, definitely txt 
 
+--- 
 another possibility is to switch to htmlunit and just emulate a browser to get js content.  maybe later, for more general library?  right now that is added complexity I do not need. 
 
 -- 
