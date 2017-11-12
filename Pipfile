@@ -18,6 +18,9 @@ seaborn = "*"
 ipykernel = "*"
 dirtyclean = "*"
 requests = "*"
+nltk = "*"
+wikipedia = "*"
+sklearn = "*"
 
 
 [dev-packages]
