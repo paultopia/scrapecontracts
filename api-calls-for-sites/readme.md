@@ -1,0 +1,1 @@
+java code is taken straight from aws documentation and tweaked to get top n alexa top sites.  there was also a product hunt scrape using producthunt api around the end of February 2017.  alexa top sites november 13 2017.
