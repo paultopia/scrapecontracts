@@ -21,6 +21,7 @@ import java.util.*;
  * <p/>
  * Note that you must sign up for Alexa Top Sites
  * at http://aws.amazon.com/alexatopsites before running this demo.
+ * PG EDIT: actually using this code to grab top 2000 sites, at a cost of $5.00, for scrape source.
  */
 public class TopSites {
     protected static final String ACTION_NAME = "TopSites";
@@ -28,8 +29,8 @@ public class TopSites {
     protected static final String SERVICE_HOST = "ats.amazonaws.com";
     protected static final String AWS_BASE_URL = "https://" + SERVICE_HOST + "/?";
 
-    protected static final int NUMBER_TO_RETURN = 10;
-    protected static final int START_NUMBER = 1001;
+    protected static final int NUMBER_TO_RETURN = 2000;
+    protected static final int START_NUMBER = 1;
     protected static final String DATEFORMAT_AWS = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     private static final String HASH_ALGORITHM = "HmacSHA256";
 
@@ -161,7 +162,8 @@ public class TopSites {
 
         String toSign = "GET\n" + SERVICE_HOST + "\n/\n" + query;
 
-        System.out.println("String to sign:\n" + toSign + "\n");
+        // getting rid of println call to avoid dumping private keys into output.
+        // System.out.println("String to sign:\n" + toSign + "\n");
 
         String signature = topSites.generateSignature(toSign);
 
@@ -169,7 +171,9 @@ public class TopSites {
             "&Signature=" + URLEncoder.encode(signature, "UTF-8");
 
         // Make request
-        System.out.println("\nMaking request to: " + uri + "\n");
+
+        // again getting rid of println call
+        //System.out.println("\nMaking request to: " + uri + "\n");
 
         URL url = new URL(uri);
         URLConnection conn = url.openConnection();
