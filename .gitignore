@@ -11,3 +11,4 @@ pom.xml.asc
 .hg/
 /raw-data
 *-checkpoint.ipynb
+.ipynb_checkpoints
