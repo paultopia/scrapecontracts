@@ -28,12 +28,8 @@ public class TopSites {
     protected static final String RESPONSE_GROUP_NAME = "Country";
     protected static final String SERVICE_HOST = "ats.amazonaws.com";
     protected static final String AWS_BASE_URL = "https://" + SERVICE_HOST + "/?";
-
-    protected static final int NUMBER_TO_RETURN = 2000;
-    protected static final int START_NUMBER = 1;
     protected static final String DATEFORMAT_AWS = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     private static final String HASH_ALGORITHM = "HmacSHA256";
-
     private String accessKeyId;
     private String secretAccessKey;
     private String countryCode;
@@ -93,7 +89,7 @@ public class TopSites {
     /**
      * Builds the query string
      */
-    protected String buildQuery() throws UnsupportedEncodingException {
+    protected String buildQuery(int startNum) throws UnsupportedEncodingException {
         String timestamp = getTimestampFromLocalTime(Calendar.getInstance().getTime());
 
         // TreeMap puts keys in alphabetical order
@@ -103,8 +99,8 @@ public class TopSites {
         queryParams.put("AWSAccessKeyId", accessKeyId);
         queryParams.put("Timestamp", URLEncoder.encode(timestamp, "UTF-8"));
         queryParams.put("CountryCode", countryCode);
-        queryParams.put("Count", "" + NUMBER_TO_RETURN);
-        queryParams.put("Start", "" + START_NUMBER);
+        queryParams.put("Count", "" + 100);
+        queryParams.put("Start", "" + startNum);
         queryParams.put("SignatureVersion", "2");
         queryParams.put("SignatureMethod", HASH_ALGORITHM);
 
@@ -144,43 +140,37 @@ public class TopSites {
         }
     }
 
+    public static void sendQuery(TopSites topSites, int startNum) throws Exception {
+        String query = topSites.buildQuery(startNum);
+        String toSign = "GET\n" + SERVICE_HOST + "\n/\n" + query;
+        String signature = topSites.generateSignature(toSign);
+        String uri = AWS_BASE_URL + query +
+            "&Signature=" + URLEncoder.encode(signature, "UTF-8");
+        URL url = new URL(uri);
+        URLConnection conn = url.openConnection();
+        InputStream in = conn.getInputStream();
+        parseResponse(in);
+    }
+
     /**
      * Makes a request to the Alexa Top Sites web service
      */
     public static void main(String[] args) throws Exception {
-        if (args.length < 2) {
+        if (args.length < 3) {
             System.out.println("Usage: java AlexaTopSites ACCESS_KEY_ID " +
-                               "SECRET_ACCESS_KEY [COUNTRY_CODE]");
+                               "SECRET_ACCESS_KEY COUNTRY_CODE NUMBER_OF_SITES");
             System.exit(-1);
         }
         String accessKey = args[0];
         String secretKey = args[1];
-        String countryCode = (args.length > 2) ? args[2] : "";
-
+        String countryCode = args[2];
+        int numSites = Integer.parseInt(args[3]);
         TopSites topSites = new TopSites(accessKey, secretKey, countryCode);
-        String query = topSites.buildQuery();
-
-        String toSign = "GET\n" + SERVICE_HOST + "\n/\n" + query;
-
-        // getting rid of println call to avoid dumping private keys into output.
-        // System.out.println("String to sign:\n" + toSign + "\n");
-
-        String signature = topSites.generateSignature(toSign);
-
-        String uri = AWS_BASE_URL + query +
-            "&Signature=" + URLEncoder.encode(signature, "UTF-8");
-
-        // Make request
-
-        // again getting rid of println call
-        //System.out.println("\nMaking request to: " + uri + "\n");
-
-        URL url = new URL(uri);
-        URLConnection conn = url.openConnection();
-        InputStream in = conn.getInputStream();
-
-        parseResponse(in);
-
+        int numCalls = numSites / 100;
+        int startNum = 1;
+        for (int i=0;i<numCalls; i++){
+            sendQuery(topSites, startNum);
+            startNum += 100;
+        }
     }
-
 }
