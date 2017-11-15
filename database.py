@@ -1,10 +1,9 @@
 
 # coding: utf-8
 
-# In[2]:
-
 import sqlite3
 import datetime
+
 def now():
     return str(datetime.datetime.now())
 def create_database(filename):
@@ -28,33 +27,5 @@ def add_data(conn, url, text):
     conn.commit()
     return c.lastrowid
 
-test_data = "this is some text"
-test_url = "http://gowder.io"
-test_database = "testing.db"
-
-testconn = create_database(test_database)
-result = add_data(testconn, test_url, test_data)
-print(result)
-testconn.close()
-    
-
-
-# In[3]:
-
-import pandas as pd
-
-conn = sqlite3.connect(test_database)
-df = pd.read_sql_query("SELECT * from contracts", conn)
-df.head()
-conn.close()
-
-
-# In[4]:
-
-df.head()
-
-
-# In[ ]:
-
-
-
+# I need some exception handling in there.  what does sqlite3 throw or do if the write fails?  
+# also are there memory based limits on how many transactions I can commit without closing the connection??
