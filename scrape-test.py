@@ -66,7 +66,7 @@ def check_for_TOS(link):
     soup = fetch(link)
     text = extract_text(soup)
     if isContract(text):
-        return text
+        return {"url": link, "text": text}
     return None
     
 def findTOS(site):
