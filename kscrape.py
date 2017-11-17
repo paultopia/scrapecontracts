@@ -15,7 +15,7 @@ from time import sleep
 browheader = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7"}
 
 def fetch(link):
-    time.sleep(1)
+    sleep(1)
     try:
         response = requests.get(link, timeout=2, headers=browheader)
     except:
