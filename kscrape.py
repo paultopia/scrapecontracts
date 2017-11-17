@@ -12,15 +12,22 @@ from dirtyclean import clean
 from urllib.parse import urljoin
 from time import sleep
 
+# I need some debug logging here.
+import logging
+logging.basicConfig(filename='scraping.log',level="DEBUG")
+
 browheader = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7"}
 
 def fetch(link):
     sleep(1)
+    logging.debug("trying to get: " + link)
     try:
         response = requests.get(link, timeout=2, headers=browheader)
     except:
+        logging.debug("failed to get: " + link)
         return None
     if response.status_code == 200:
+        logging.debug("successfully got: " + link)
         return BeautifulSoup(response.text, "lxml")
     return None
 
@@ -34,10 +41,12 @@ with open("sites_to_scrape.json") as sj:
 
 def isContract(newdata):
     if newdata is None:
+        logging.debug("newdata is None in isContract")
         return False
     newdata = [newdata]
     transformed = transformer.transform([clean(x) for x in newdata])
     predictions = model.predict_proba(transformed)
+    logging.debug("I got a prediction!  it's " + str(predictions))
     result = predictions[:,1] > 0.5
     return result[0]
 
