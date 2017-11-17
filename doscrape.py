@@ -6,7 +6,7 @@ import pandas as pd
 from scrape import findTOS
 from database import create_database, add_data
 
-logging.basicConfig(filename='scraping.log',level=logging.info)
+logging.basicConfig(filename='scraping.log',level="INFO")
 
 def scrape_sites(jsonfile, dbconn):
     for site in jsonfile:
