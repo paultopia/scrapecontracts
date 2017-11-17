@@ -1,2 +1,0 @@
-ERROR:root:failed to load or write csv. here's the error: Cannot operate on a closed database.
-INFO:root:done executing scraping program!
