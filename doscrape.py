@@ -6,7 +6,7 @@ import pandas as pd
 from kscrape import findTOS
 from kdatabase import create_database, add_data
 
-logging.basicConfig(filename='scraping.log',level=logging.info)
+logging.basicConfig(filename='scraping.log',level="INFO")
 
 def scrape_sites(jsonfile, dbconn):
     for site in jsonfile:
@@ -22,7 +22,7 @@ def save_sites_as_csv(dbfilename, csvfilename): # separate fx because may blow u
         df = pd.read_sql_query("SELECT * from contracts", dbconn)
         df.write_csv("csvfilename")
     except Exception as e:
-        logging.error("failed to load or write csv. here's the error: " + str(e.value))
+        logging.error("failed to load or write csv. here's the error: " + str(e))
     dbconn.close()
 
 
