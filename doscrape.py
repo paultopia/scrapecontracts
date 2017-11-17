@@ -9,7 +9,9 @@ from kdatabase import create_database, add_data
 logging.basicConfig(filename='scraping.log',level="INFO")
 
 def scrape_sites(jsonfile, dbconn):
-    for site in jsonfile:
+    with open(jsonfile) as jf:
+        sitelist = json.load(jsonfile)
+    for site in sitelist:
         contracts = findTOS(site)
         if contracts:
             for contract in contracts:
