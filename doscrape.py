@@ -11,9 +11,10 @@ logging.basicConfig(filename='scraping.log',level="INFO")
 def scrape_sites(jsonfile, dbconn):
     for site in jsonfile:
         contracts = findTOS(site)
-        for contract in contracts:
-            add_data(dbconn, contract["url"], contract["text"])
-            logging.info("attempted to add: " + contract["url"]) # if these don't show up in db, I know it failed and I can go back and redo more aggressively.
+        if contracts:
+            for contract in contracts:
+                add_data(dbconn, contract["url"], contract["text"])
+                logging.info("attempted to add: " + contract["url"]) # if these don't show up in db, I know it failed and I can go back and redo more aggressively.
     dbconn.close()
 
 def save_sites_as_csv(dbfilename, csvfilename): # separate fx because may blow up memory.
