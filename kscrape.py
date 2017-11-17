@@ -52,9 +52,11 @@ def isContract(newdata):
     return result[0]
 
 def normalize_link(baseurl, href):
-    if href.startswith('http'):
-        return href.partition("#")[0]
-    return urljoin(baseurl, href).partition("#")[0]
+    if href:
+        if href.startswith('http'):
+            return href.partition("#")[0]
+        return urljoin(baseurl, href).partition("#")[0]
+    return None
 
 def extract_links(soup, baseurl):
     if soup is None:
@@ -73,10 +75,11 @@ def extract_text(soup):
     return text
     
 def check_for_TOS(link):
-    soup = fetch(link)
-    text = extract_text(soup)
-    if isContract(text):
-        return {"url": link, "text": text}
+    if link:
+        soup = fetch(link)
+        text = extract_text(soup)
+        if isContract(text):
+            return {"url": link, "text": text}
     return None
     
 def findTOS(site):
