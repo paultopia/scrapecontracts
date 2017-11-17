@@ -10,7 +10,7 @@ logging.basicConfig(filename='scraping.log',level="INFO")
 
 def scrape_sites(jsonfile, dbconn):
     with open(jsonfile) as jf:
-        sitelist = json.load(jsonfile)
+        sitelist = json.load(jf)
     for site in sitelist:
         contracts = findTOS(site)
         if contracts:
