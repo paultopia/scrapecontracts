@@ -1,0 +1,55 @@
+ERROR:urllib3.connection:Certificate did not match expected hostname: custhelp.com. Certificate: {'subject': ((('commonName', '*.rightnow.com'),),), 'subjectAltName': [('DNS', '*.rightnow.com'), ('DNS', 'rightnow.com')]}
+INFO:root:attempted to add: https://www.digitsole.com/general-conditions-sale/
+INFO:root:attempted to add: https://aetros.com/terms
+INFO:root:attempted to add: https://en.toolinbox.net/atom.xml
+INFO:root:attempted to add: http://vampr.me/PrivacyPolicy.html
+INFO:root:attempted to add: http://vampr.me/TermsConditions.html
+INFO:root:attempted to add: https://hootsuite.com/legal/terms
+INFO:root:attempted to add: https://hootsuite.com/legal/privacy
+ERROR:urllib3.connection:Certificate did not match expected hostname: online-live-streaming.com. Certificate: {'subject': ((('commonName', '*.azurewebsites.net'),),), 'subjectAltName': [('DNS', '*.azurewebsites.net'), ('DNS', '*.scm.azurewebsites.net'), ('DNS', '*.azure-mobile.net'), ('DNS', '*.scm.azure-mobile.net')]}
+INFO:root:attempted to add: https://www.plumewifi.com/legal
+INFO:root:attempted to add: http://www.wnd.com/category/front-page/education/feed/
+INFO:root:attempted to add: https://www.loseit.com/terms/
+INFO:root:attempted to add: https://www.loseit.com/privacy/
+INFO:root:attempted to add: https://www.soylent.com/terms/
+INFO:root:attempted to add: https://www.soylent.com/privacy/
+INFO:root:attempted to add: https://soylent.com/terms/
+INFO:root:attempted to add: https://olioex.com/terms-and-conditions/
+INFO:root:attempted to add: https://ixl.com/termsofservice
+INFO:root:attempted to add: https://ixl.com/privacypolicy
+INFO:root:attempted to add: https://www.engadget.com/holiday-gift-guide-2017/
+ERROR:urllib3.connection:Certificate did not match expected hostname: markets.businessinsider.com. Certificate: {'subject': ((('commonName', 'a248.e.akamai.net'),),), 'subjectAltName': [('DNS', '*.akamaized.net'), ('DNS', '*.akamaihd-staging.net'), ('DNS', '*.akamaized-staging.net'), ('DNS', '*.akamaihd.net'), ('DNS', 'a248.e.akamai.net')]}
+INFO:root:attempted to add: https://businessinsider.com/privacy-policy
+INFO:root:attempted to add: https://businessinsider.com/terms
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+ERROR:urllib3.connection:Certificate did not match expected hostname: lokelyapp.com. Certificate: {'subject': ((('commonName', 'lokely.co'),),), 'subjectAltName': [('DNS', 'lokely.co')]}
+INFO:root:attempted to add: http://www.joann.com/faqs.html
+INFO:root:attempted to add: http://www.joann.com/supply-chain-disclosure.html
+INFO:root:attempted to add: http://www.joann.com/terms-conditions.html
+INFO:root:attempted to add: http://www.joann.com/privacy-policy.html
+INFO:root:attempted to add: https://pacemaker.net/legal
+INFO:root:attempted to add: https://home.passle.net/privacy-policy/
+INFO:root:attempted to add: https://home.passle.net/termsandconditions/
+INFO:root:attempted to add: https://home.passle.net/terms-of-use/
+ERROR:urllib3.connection:Certificate did not match expected hostname: kruzo.io. Certificate: {'subject': ((('commonName', 'moods.md'),),), 'subjectAltName': [('DNS', 'moods.md'), ('DNS', 'www.moods.md')]}
+INFO:root:attempted to add: http://www.orcanetwork.org/Main/index.php?categories_file=Lolita
+INFO:root:attempted to add: http://www.groupninemedia.com/privacy
+INFO:root:attempted to add: http://www.groupninemedia.com/tscs
+INFO:root:attempted to add: https://www.thedodo.com/privacy-policy
+INFO:root:attempted to add: https://autotrader.com/legal/privacy-statement.xhtml
+INFO:root:attempted to add: https://autotrader.com/legal/visitor-agreement.xhtml
+INFO:root:attempted to add: https://autotrader.com/trade-in-instant-cash-offer/?LNX=TIMATCHPNAVCNR
+INFO:root:attempted to add: https://autotrader.com/trade-in-instant-cash-offer/?LNX=TIMATCHPNAV
+INFO:root:attempted to add: https://autotrader.com/instant-cash-offer/?LNX=TIMATCHPLGOTESTGROUPG
+INFO:root:attempted to add: https://www.swurveys.com/terms/
+INFO:root:attempted to add: https://indeed.com/legal
+INFO:root:attempted to add: https://americanmilitarynews.com/2017/11/nyc-truck-terrorist-tried-to-hang-isis-flag-in-hospital-room-read-the-full-criminal-complaint-text-including-other-details/
+INFO:root:attempted to add: http://americanmilitarynews.com/terms-of-service/
+INFO:root:attempted to add: http://americanmilitarynews.com/privacy-policy/
+INFO:root:attempted to add: http://hr.vanderbilt.edu/benefits/
