@@ -14,7 +14,8 @@ from time import sleep
 
 # I need some debug logging here.
 import logging
-logging.basicConfig(filename='scraping.log',level="DEBUG")
+# logging.basicConfig(filename='scraping.log',level="DEBUG")
+# removing for production, now that it works.
 
 browheader = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7"}
 
