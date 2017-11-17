@@ -92,9 +92,9 @@ def findTOS(site):
                 except:
                     soup = None
     links = extract_links(soup, target)
-        if links:
-            return [x for x in [check_for_TOS(link) for link in links] if x is not None]
-        return None
+    if links:
+        return [x for x in [check_for_TOS(link) for link in links] if x is not None]
+    return None
 
 # so this exposes a simple API that I can just call from other code: loop over the sites to check and call findTOS on each.  Then for each return from that, I can check if it's none, and if not, append the contents to database. 
 
