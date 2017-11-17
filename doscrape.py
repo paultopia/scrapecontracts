@@ -21,7 +21,7 @@ def save_sites_as_csv(dbfilename, csvfilename): # separate fx because may blow u
     dbconn = sqlite3.connect(dbfilename)
     try:
         df = pd.read_sql_query("SELECT * from contracts", dbconn)
-        df.to_csv("csvfilename")
+        df.to_csv(csvfilename)
     except Exception as e:
         logging.error("failed to load or write csv. here's the error: " + str(e))
     dbconn.close()
