@@ -3,8 +3,8 @@ import sys
 import sqlite3
 import logging
 import pandas as pd
-from scrape import findTOS
-from database import create_database, add_data
+from kscrape import findTOS
+from kdatabase import create_database, add_data
 
 logging.basicConfig(filename='scraping.log',level=logging.info)
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     jsonfile = sys.argv[1]
     dbfilename = sys.argv[2]
     csvfilename = sys.argv[3]
-    dbconn = create_datbase(dbfilename)
+    dbconn = create_database(dbfilename)
     scrape_sites(jsonfile, dbconn)
     save_sites_as_csv(dbfilename, csvfilename)
     print("done executing scraping program!")
